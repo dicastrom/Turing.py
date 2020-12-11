@@ -1,2 +1,4 @@
 # Turing.py
-This is a implementation of a turning machine that accepts the following language:  L = {w#w: w∈{1,0}*}
+This is a implementation of a Turing machine that accepts the following language:  LaTeX: L=\{w\#w : w\in\{0,1\}^*\}L = { w # w : w ∈ { 0 , 1 } ∗ }
+
+
