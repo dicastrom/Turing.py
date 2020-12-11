@@ -1,5 +1,15 @@
 
-# L = {w#w: w∈{1,0}*}
+#github= https://github.com/dicastrom/Turing.py
+
+#This is the work of Diego Castro, djc16j, Theory of Computation, Fall 2020
+
+#The hardest part about this was not actually coding the machine, but desigining it on paper
+#See github for a photo of the state machine used to make the Turing machiene acceot or reject strings
+
+#The language that this machine solves for is  L = {w#w: w∈{1,0}*}
+
+#This function is used to print a "tape"...honesly getting this right was the hardest part
+#Please Note: the read/write head is represented by the carat sigen (^)
 def printTape(tape, index):
     print("Index is = ", index)
     print(len(tape) * "--"+'-')
@@ -14,12 +24,10 @@ def printTape(tape, index):
         print(index * "  ", "^")
 
 str = input("Enter the string : ")
-
 tape = []
 tape[:] = str
 tape.insert(0," ")
 tape.insert(len(tape)," ")
-
 #Adding to the tape to "pretend" its infinately long
 
 
@@ -27,9 +35,6 @@ Process = True
 state =0
 index = 0
 operation = 0
-# for i in range(0,10):
-#     printTape(tape,i)
-
 
 while(Process==True):
     if(state==-1):
@@ -38,7 +43,6 @@ while(Process==True):
         Process=False
     elif(state == 0):
         print("In state 0!")
-        #print(index, " ->", tape[index])
         printTape(tape,index)
         index=index+1
         if(tape[index]==" "):
@@ -51,13 +55,11 @@ while(Process==True):
             tape[index]=' '
             index=index+1
             printTape(tape,index)
-            #print("Current State = State 2 ")
             state=2
         elif (tape[index] == '0'):
             tape[index] = ' '
             index=index+1
             printTape(tape,index)
-            #print("Current State = State 1 ")
             state = 1
         elif(tape[index]=='#'):
             printTape(tape,index)
@@ -65,7 +67,6 @@ while(Process==True):
             break
     elif(state == 1):
         print("In state 1!")
-        #print(index, " ->", tape[index])
         while(tape[index]=='1' or tape[index]=='0'):
             index = index + 1
             printTape(tape,index)
@@ -118,8 +119,6 @@ while(Process==True):
             state = 7
     elif(state == 6):
         print("In state 6!")
-
-        #print(index, " ->", tape[index])
         printTape(tape,index)
         tape[index]=" "
         while(tape[index]==' '):
@@ -130,7 +129,6 @@ while(Process==True):
             state=8
     elif(state ==7):
         print("In state 7!")
-        #print(index, " ->", tape[index])
         index = index - 1
         printTape(tape,index)
         while (tape[index] == '1' or tape[index] == '0'):
@@ -139,13 +137,13 @@ while(Process==True):
         state=0
     elif(state == 8):
         print("In state 8!")
-        #print(index, " ->", tape[index])
         index = index - 1
         printTape(tape,index)
         while (tape[index] == '1' or tape[index] == '0'):
             index = index - 1
             printTape(tape, index)
         state=0
+
 
 
 
